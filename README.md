@@ -1,8 +1,8 @@
-## Dot-Com testna naloga
+## D-C registration testna naloga
 
 ## Opis
 
-Testna naloga za podjetje [Dot-com] d.o.o.
+Testna naloga za podjetje [D-C]
 
 
 ```
@@ -18,5 +18,3 @@ If indexDB has data, 'Hello, LastName Name!' should appear in the top left corne
 If Date of birth is Friday, the background should change to green.
 
 You should create this as Enterprise level application. Use of e2e test, unit tests, TypeScript and Angular Material Design are not required but are preferable.```
-
-[Dot-Com]: http://www.dotcom.ts.it/sl/dotcom-s-r-l-slovenia
