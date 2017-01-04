@@ -1,0 +1,37 @@
+<div class="col-md-6 col-md-offset-3" ng-class="{bornOnFriday:bornOnFriday}">
+
+    <form ng-submit="submit()" ng-controller="registerController">
+        Enter fields and hit enter or click Submit button:
+
+        <div class="form-group" ng-class="{ 'has-error': form.firstName.$dirty && form.firstName.$error.required }">
+            <label for="firstName">Name</label>
+            <input type="text" name="firstName" id="firstName" class="form-control" ng-model="firstName"
+                   ng-class="{inputError:firstNameError}" required/>
+            <span ng-show="form.firstName.$dirty && form.firstName.$error.required" class="help-block">First name is required</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.lastName.$dirty && form.lastName.$error.required }">
+            <label for="lastName">Last name</label>
+            <input type="text" name="lastName" id="lastName" class="form-control" ng-model="lastName"
+                   ng-class="{inputError:lastNameError}" required />
+            <span ng-show="form.lastName.$dirty && form.lastName.$error.required" class="help-block">Last name is required</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.address.$dirty && form.address.$error.required }">
+            <label for="address">Address</label>
+            <input type="text" name="address" id="address" class="form-control" ng-model="address"
+                   ng-class="{inputError:addressError}" required />
+            <span ng-show="form.address.$dirty && form.address.$error.required" class="help-block">Address is required</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.birthday.$dirty && form.birthday.$error.required }">
+            <label for="birthday">Date of birth</label>
+            <input type="date" name="date" id="birthday" class="form-control" ng-model="birthday"
+                   ng-class="{inputError:birthdayError}" required />
+            <span ng-show="form.birthday.$dirty && form.birthday.$error.required" class="help-block">birthday is required</span>
+        </div>
+        <pre id="message" ng-class="{hideMessage:hideMessage}">{{errorText}}</pre>
+
+        <input type="submit" id="submit" value="Submit"/>
+
+        <!--<pre>list={{list}}</pre>-->
+    </form>
+</div>
+

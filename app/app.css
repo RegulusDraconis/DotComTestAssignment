@@ -1,0 +1,80 @@
+/* app css stylesheet */
+
+.menu {
+  list-style: none;
+  border-bottom: 0.1em solid black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em;
+}
+
+.menu:before {
+  content: "[";
+}
+
+.menu:after {
+  content: "]";
+}
+
+.menu > li {
+  display: inline;
+}
+
+.menu > li:before {
+  content: "|";
+  padding-right: 0.3em;
+}
+
+.menu > li:nth-child(1):before {
+  content: "";
+  padding: 0;
+}
+
+.mainListItem{
+  list-style-type : none;
+}
+
+#navigation {
+  text-align: center;
+}
+.nav-pills{
+  display: inline-block;
+}
+.navButton {
+  width: 100px;
+  display: inline-block;
+}
+
+.glyphicon-chevron-down:before{
+  padding-right: 10px;
+}
+.glyphicon-chevron-up:before{
+  padding-right: 10px;
+}
+
+.fa-rebel{
+  font-size: 36px !important;
+  display: inline-block;
+  margin: 10px;
+}
+.fa-first-order{
+  font-size: 36px !important;
+  display: inline-block;
+  margin: 10px;
+}
+.showInlineWithGlyphicons{
+  display: inline-block;
+}
+
+.inputError{
+  background-color: red !important;
+}
+#message{
+  color:red;
+}
+.hideMessage{
+  display:none;
+}
+.bornOnFriday
+{
+  background-color: green !important;
+}
