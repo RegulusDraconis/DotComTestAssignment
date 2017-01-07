@@ -34,5 +34,23 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
         };
     });
 
+    var db;
+
+    app.factory('FactoryHomepage', [function($http){
+        var db = new Dexie("user_database");
+
+        db.version(1).stores({
+            users: 'firstName,lastName, address, birthday, registerTime'
+        });
+
+        return {
+            indexedDB: function() {
+                return db;
+            }
+        };
+
+        return FactoryHomepage;
+    }]);
+
 })();
 

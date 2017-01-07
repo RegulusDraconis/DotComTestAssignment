@@ -11,19 +11,21 @@
             });
         }])
 
-        .controller('registerController', ['$scope', function($scope) {
+        .factory('FactoryRegister', function($http, FactoryHomepage){
+            return {
+                Work: function() {
+                    // alert("work1");
+                    return FactoryHomepage.indexedDB();
+                }
+            };
+        })
+
+        .controller('registerController', ['$scope', 'FactoryRegister', function($scope, FactoryRegister) {
             $scope.list = [];
             var firstName, lastName, address, birthday, birthdayDate, registerTime= null;
             var ageDif, ageTime, ageYears = null;
 
-            var db = new Dexie("user_database");
-            db.version(1).stores({
-                users: 'firstName,lastName, address, birthday, registerTime'
-            });
-
-            db.open().catch(function (e) {
-                alert ("Open failed: " + e);
-            });
+            var db = FactoryRegister.Work();
 
             $scope.hideMessage = true;
             $scope.bornOnFriday = false;
@@ -67,9 +69,12 @@
                     }
                     else
                     {
-                        $scope.bornOnFriday = true;     //we actually do not need this but it does not hurt.
+                        $scope.bornOnFriday = true;     //we actually don't need this but it does not hurt.
                     }
 
+                    db.open().catch(function (e) {
+                        alert ("Open failed: " + e);
+                    });
 
                     db.users.put({firstName: firstName, lastName: lastName,
                         address: address, birthday: birthday, registerTime: registerTime}).then (function(){
@@ -81,8 +86,6 @@
                     }).catch(function(error) {
                         alert ("Error occured: " + error);
                     });
-
-                    
 
                     $scope.firstName = '';
                     $scope.lastName = '';
