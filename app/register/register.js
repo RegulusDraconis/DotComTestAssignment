@@ -41,15 +41,6 @@
                 }
                 if ($scope.birthday) {
                     birthday = $scope.birthday;
-                    birthdayDate = new Date(birthday);
-                    if(birthdayDate.getDay() == 5)
-                    {
-                        $scope.bornOnFriday = true;
-                    }
-                    else
-                    {
-                        // alert(birthdayDate.getDay());
-                    }
                 }
 
                 registerTime = new Date();
@@ -59,7 +50,7 @@
                 ageYears = Math.abs(ageTime.getUTCFullYear() - 1970);
 
 
-                if(ageYears > 21) {
+                if(ageYears > 21) {                     //we only allow users who are at least 21 years old
                     $scope.birthdayError = false;
                     $scope.hideMessage = true;
 
@@ -69,27 +60,29 @@
                     // $scope.list.push(birthday);
                     // $scope.list.push(registerTime);
 
+                    birthdayDate = new Date(birthday);
+                    if(birthdayDate.getDay() == 5)
+                    {
+                        $scope.bornOnFriday = true;     //this will make the page ba background-color green.
+                    }
+                    else
+                    {
+                        $scope.bornOnFriday = true;     //we actually do not need this but it does not hurt.
+                    }
+
+
                     db.users.put({firstName: firstName, lastName: lastName,
                         address: address, birthday: birthday, registerTime: registerTime}).then (function(){
-                        //
-                        // Then when data is stored, read from it
-                        //
-                        return db.users.get(firstName);
+                        return db.users.get(firstName); // Then when data is stored, read from it
                     }).then(function (user) {
-                        //
-                        // Display the result
-                        //
+                                                        // Display the result
                         alert ("" + user.firstName + " " + user.lastName + " " +
                         user.address + " " + user.birthday + " " + user.registerTime);
                     }).catch(function(error) {
-                        //
-                        // Finally don't forget to catch any error
-                        // that could have happened anywhere in the
-                        // code blocks above.
-                        //
-                        alert ("Ooops: " + error);
+                        alert ("Error occured: " + error);
                     });
 
+                    
 
                     $scope.firstName = '';
                     $scope.lastName = '';
