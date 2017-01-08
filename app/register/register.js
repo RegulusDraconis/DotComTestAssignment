@@ -13,22 +13,26 @@
 
         .factory('FactoryRegister', function($http, FactoryHomepage){
             return {
-                Work: function() {
-                    // alert("work1");
+                getIndexedDb: function() {
                     return FactoryHomepage.indexedDB();
+                },
+                getPrintWelcomeMessage: function(lastName, firstName) {
+                    FactoryHomepage.printWelcomeMessage(lastName, firstName);
+                },
+                clearDB: function(){
+                    FactoryHomepage.clearDB();
                 }
             };
         })
 
-        .controller('registerController', ['$scope', 'FactoryRegister', function($scope, FactoryRegister) {
+        .controller('registerController', ['$scope', '$rootScope', 'FactoryRegister', function($scope, $rootScope, FactoryRegister) {
             $scope.list = [];
             var firstName, lastName, address, birthday, birthdayDate, registerTime= null;
             var ageDif, ageTime, ageYears = null;
 
-            var db = FactoryRegister.Work();
+            var db = FactoryRegister.getIndexedDb();
 
             $scope.hideMessage = true;
-            $scope.bornOnFriday = false;
 
             $scope.submit = function() {
 
@@ -56,20 +60,14 @@
                     $scope.birthdayError = false;
                     $scope.hideMessage = true;
 
-                    // $scope.list.push(firstName);
-                    // $scope.list.push(lastName);
-                    // $scope.list.push(address);
-                    // $scope.list.push(birthday);
-                    // $scope.list.push(registerTime);
-
                     birthdayDate = new Date(birthday);
                     if(birthdayDate.getDay() == 5)
                     {
-                        $scope.bornOnFriday = true;     //this will make the page ba background-color green.
+                        $rootScope.bornOnFriday = true;     //this will make the page background-color green.
                     }
                     else
                     {
-                        $scope.bornOnFriday = true;     //we actually don't need this but it does not hurt.
+                        $rootScope.bornOnFriday = false;     //we actually don't need this but it does not hurt.
                     }
 
                     db.open().catch(function (e) {
@@ -81,11 +79,13 @@
                         return db.users.get(firstName); // Then when data is stored, read from it
                     }).then(function (user) {
                                                         // Display the result
-                        alert ("" + user.firstName + " " + user.lastName + " " +
-                        user.address + " " + user.birthday + " " + user.registerTime);
+                        // alert ("" + user.firstName + " " + user.lastName + " " +
+                        // user.address + " " + user.birthday + " " + user.registerTime);
                     }).catch(function(error) {
                         alert ("Error occured: " + error);
                     });
+
+                    FactoryRegister.getPrintWelcomeMessage(lastName, firstName);
 
                     $scope.firstName = '';
                     $scope.lastName = '';
@@ -98,5 +98,8 @@
                     $scope.hideMessage = false;
                 }
             };
+
+
+
         }]);
 })();

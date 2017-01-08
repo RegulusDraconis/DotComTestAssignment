@@ -20,6 +20,7 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
 
 
 (function(){
+
     var app = angular.module('myApp');
 
     app.directive('toggleClass', function() {
@@ -46,6 +47,10 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
         return {
             indexedDB: function() {
                 return db;
+            },
+            printWelcomeMessage: function(lastName, firstName) {
+                var selector = document.getElementById('Greeting');
+                selector.textContent = "Hello, " + lastName + " " + firstName + "!";
             }
         };
 
