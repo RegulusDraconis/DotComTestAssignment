@@ -53,7 +53,7 @@
 
                     db.open().catch(function (e)
                     {
-                        alert("Open failed: " + e);
+                        console.log("Open failed: " + e);
                     });
 
                     db.users.put({
@@ -91,8 +91,6 @@
             $scope.collectionGetDataButton = function()
             {
                 Factory.collectionGetData();
-
             }
-
         }]);
 })();
