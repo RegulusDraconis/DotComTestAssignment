@@ -42,7 +42,6 @@ angular.module('GlobalFactory', ['myApp']);
 
                             if(currentRegisterTime > previousRegisterTime)
                             {
-                                console.log(currentRegisterTime);
                                 document.getElementById('Greeting').textContent = "Hello, " + lastName + " " + firstName + "!";
                                 previousRegisterTime = currentRegisterTime;
                             }
