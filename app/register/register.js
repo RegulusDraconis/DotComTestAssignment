@@ -43,23 +43,10 @@
 
             $scope.submit = function ()
             {
-
-                if ($scope.firstName)
-                {
-                    firstName = $scope.firstName;
-                }
-                if ($scope.lastName)
-                {
-                    lastName = $scope.lastName;
-                }
-                if ($scope.address)
-                {
-                    address = $scope.address;
-                }
-                if ($scope.birthday)
-                {
-                    birthday = $scope.birthday;
-                }
+                firstName = $scope.firstName;
+                lastName = $scope.lastName;
+                address = $scope.address;
+                birthday = $scope.birthday;
 
                 registerTime = new Date();
 
@@ -96,7 +83,7 @@
                         return db.users.get(firstName); // Then when data is stored, read from it
                     }).catch(function (error)
                     {
-                        alert("Error occured: " + error);
+                        console.log("Error occured: " + error);
                     });
 
                     FactoryRegister.getPrintWelcomeMessage(lastName, firstName);
