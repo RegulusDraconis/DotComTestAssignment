@@ -28,6 +28,15 @@
 
         <div ng-view></div>
 
+        <div class="col-md-6 col-md-offset-3 databaseInfoContainer">
+            <div>Number of all entries in indexedDB:</div>
+            <pre id="numberOfEntries"></pre>
+
+            <div>List of all entries from IndexedDB:</div>
+            <pre id="printAllEntries"></pre>
+        </div>
+
+
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js"></script>
 

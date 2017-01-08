@@ -1,6 +1,5 @@
 (function ()
 {
-
     'use strict';
 
     angular.module('myApp.register', ['ngRoute'])
@@ -85,8 +84,15 @@
 
             $scope.clearDBButton = function()
             {
-                Factory.clearDB();
+            Factory.clearDB();
 
             }
+
+            $scope.collectionGetDataButton = function()
+            {
+                Factory.collectionGetData();
+
+            }
+
         }]);
 })();

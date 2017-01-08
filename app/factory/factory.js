@@ -29,8 +29,45 @@ angular.module('GlobalFactory', ['myApp']);
             clearDB: function(firstName)
             {
                 db.delete();
-                var selector = document.getElementById('Greeting');
-                selector.textContent = "";
+                db = new Dexie("user_database");
+
+                db.version(1).stores({
+                    users: 'firstName,lastName, address, birthday, registerTime'
+                });
+
+                document.getElementById('Greeting').textContent = "";
+                document.getElementById('numberOfEntries').innerHTML = "0";
+                document.getElementById('printAllEntries').innerHTML = "No user in indexedDB";
+            },
+            collectionGetData: function()
+            {
+                var collection = db.users;
+                document.getElementById('numberOfEntries').innerHTML = "";
+                document.getElementById('printAllEntries').innerHTML = "";
+
+
+                collection.count(function(users) {
+                    document.getElementById('numberOfEntries').innerHTML = users;
+                });
+
+                collection.count(function(users) {
+                    if (users <= 0)
+                    {
+                        document.getElementById('printAllEntries').innerHTML = "No user in indexedDB";
+                    } else
+                    {
+                        collection.each(function (users)
+                        {
+                            document.getElementById('printAllEntries').innerHTML +=
+                                '<b>Lastname: </b>' + users.lastName + '<br />' +
+                                '<b>Firstname: </b>' + users.firstName + '<br />' +
+                                '<b>Address: </b>' + users.address + '<br />' +
+                                '<b>Birthday: </b>' + users.birthday + '<br />' +
+                                '<b>Register time: </b>' + users.registerTime + '<br />' +
+                                '------------------------------------------------------';
+                        });
+                    }
+                });
             }
         };
     }]);

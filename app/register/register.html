@@ -4,7 +4,7 @@
         Enter fields and hit Enter or click Submit button:
 
         <div class="form-group" ng-class="{ 'has-error': form.firstName.$dirty && form.firstName.$error.required }">
-            <label for="firstName">Name</label>
+            <label for="firstName">First name</label>
             <input type="text" name="firstName" id="firstName" class="form-control" ng-model="firstName"
                    ng-class="{inputError:firstNameError}" required/>
             <span ng-show="form.firstName.$dirty && form.firstName.$error.required" class="help-block">First name is required</span>
@@ -30,10 +30,9 @@
         <pre id="message" ng-class="{hideMessage:hideMessage}">{{errorText}}</pre>
 
         <input type="submit" id="submit" value="Submit"/>
-        <!--<input id="clickMe" type="button" value="Clear indexedDB"  />-->
-        <!--<span>{{secondMethod()}}</span>-->
-        <a ng-href='#here' ng-click='clearDBButton()' >Clear IndexedDB</a>
+        <button type="button" ng-href='#here' ng-click='collectionGetDataButton()' >Print info about indexedDB!</button>
 
+        <button type="button" ng-href='#here' ng-click='clearDBButton()' class="pullButtonRight">Clear IndexedDB</button>
     </form>
 </div>
 
