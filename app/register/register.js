@@ -26,6 +26,8 @@
 
             $scope.submit = function ()
             {
+                $rootScope.bornOnFriday = false;    
+
                 firstName = $scope.firstName;
                 lastName = $scope.lastName;
                 address = $scope.address;
