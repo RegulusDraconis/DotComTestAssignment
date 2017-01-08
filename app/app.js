@@ -5,21 +5,25 @@ angular.module('myApp', [
     'ngRoute',
     'myApp.register',
     'myApp.version'
-]).
-config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
+]).config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider)
+{
     $locationProvider.hashPrefix('!');
 }]);
 
 
-(function(){
+(function ()
+{
 
     var app = angular.module('myApp');
 
-    app.directive('toggleClass', function() {
+    app.directive('toggleClass', function ()
+    {
         return {
             restrict: 'A',
-            link: function(scope, element, attrs) {
-                element.bind('click', function() {
+            link: function (scope, element, attrs)
+            {
+                element.bind('click', function ()
+                {
                     element.toggleClass(attrs.toggleClass);
                     element.toggleClass("glyphicon glyphicon-chevron-up");
                 });
@@ -27,7 +31,8 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
         };
     });
 
-    app.factory('FactoryHomepage', [function($http){
+    app.factory('FactoryHomepage', [function ($http)
+    {
         var db = new Dexie("user_database");
 
         db.version(1).stores({
@@ -35,10 +40,12 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
         });
 
         return {
-            indexedDB: function() {
+            indexedDB: function ()
+            {
                 return db;
             },
-            printWelcomeMessage: function(lastName, firstName) {
+            printWelcomeMessage: function (lastName, firstName)
+            {
                 var selector = document.getElementById('Greeting');
                 selector.textContent = "Hello, " + lastName + " " + firstName + "!";
             }
