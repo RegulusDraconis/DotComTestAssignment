@@ -21,9 +21,12 @@ angular.module('GlobalFactory', ['myApp']);
             printWelcomeMessage: function ()
             {
                 var collection = db.users;
+                var previousRegisterTime = new Date();
+                previousRegisterTime = previousRegisterTime.setFullYear(0,0,0);
+
+                var currentRegisterTime;
                 var firstName = "";
                 var lastName = "";
-
 
                 collection.count(function(users) {
                     if (users <= 0)
@@ -35,7 +38,14 @@ angular.module('GlobalFactory', ['myApp']);
                         {
                             firstName = users.firstName;
                             lastName = users.lastName;
-                            document.getElementById('Greeting').textContent = "Hello, " + lastName + " " + firstName + "!";
+                            currentRegisterTime = users.registerTime;
+
+                            if(currentRegisterTime > previousRegisterTime)
+                            {
+                                console.log(currentRegisterTime);
+                                document.getElementById('Greeting').textContent = "Hello, " + lastName + " " + firstName + "!";
+                                previousRegisterTime = currentRegisterTime;
+                            }
                         });
                     }
                 });
