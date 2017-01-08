@@ -77,10 +77,6 @@
                     db.users.put({firstName: firstName, lastName: lastName,
                         address: address, birthday: birthday, registerTime: registerTime}).then (function(){
                         return db.users.get(firstName); // Then when data is stored, read from it
-                    }).then(function (user) {
-                                                        // Display the result
-                        // alert ("" + user.firstName + " " + user.lastName + " " +
-                        // user.address + " " + user.birthday + " " + user.registerTime);
                     }).catch(function(error) {
                         alert ("Error occured: " + error);
                     });

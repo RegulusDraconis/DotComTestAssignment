@@ -8,14 +8,6 @@ angular.module('myApp', [
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
     $locationProvider.hashPrefix('!');
-
-    // $routeProvider
-    //     .when('/register', {
-    //         controller: 'RegisterController',
-    //         templateUrl: 'register/register.html',
-    //         controllerAs: 'vm'
-    //     })
-    // .otherwise({redirectTo: '/register'});
 }]);
 
 
@@ -35,8 +27,6 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
         };
     });
 
-    var db;
-
     app.factory('FactoryHomepage', [function($http){
         var db = new Dexie("user_database");
 
@@ -53,8 +43,6 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
                 selector.textContent = "Hello, " + lastName + " " + firstName + "!";
             }
         };
-
-        return FactoryHomepage;
     }]);
 
 })();

@@ -17,4 +17,5 @@ to indexDB, if the age of the applicant is higher than 21 years.
 If indexDB has data, 'Hello, LastName Name!' should appear in the top left corner.
 If Date of birth is Friday, the background should change to green.
 
-You should create this as Enterprise level application. Use of e2e test, unit tests, TypeScript and Angular Material Design are not required but are preferable.```
+You should create this as Enterprise level application. Use of e2e test, unit tests, TypeScript and Angular Material Design are not required but are preferable.
+```
