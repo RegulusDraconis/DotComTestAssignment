@@ -4,6 +4,14 @@
 
 Test assignment for company Dot-Com
 
+##Extra functionality
+```
+1. Added "Print info about IndexedDB" button, which:
+    - prints number of entries in indexedDB and lists all data
+    - lists all entries in database in orderly manner
+2. Added "ClearDB" button, which:
+    - clears the database and corrects divs with printed info about the IndexedDB.
+```
 ##Installation steps:
 ```
 1. Install NodeJS: 
