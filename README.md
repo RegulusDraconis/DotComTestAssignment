@@ -1,9 +1,29 @@
-## D-C registration testna naloga
+## D-C registration test assignment
 
-## Opis
+## Description
 
-Testna naloga za podjetje [D-C]
+Test assignment for company Dot-Com
 
+##Installation steps:
+```
+1. Install NodeJS: 
+```
+https://nodejs.org/en/
+```
+2. Install Git: 
+```
+https://git-scm.com/
+
+```
+3. Run "npm install -g http-server"
+4. Run "git clone https://github.com/RegulusDraconis/DotComTestAssignment.git"
+5. Run "cd DotComTestAssignment/"
+6. Run "http-server"
+7. Open "http://localhost:8080/app"
+```
+
+
+##Assignment instructions:
 
 ```
 Create GitHub repository.
