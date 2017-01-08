@@ -1,4 +1,4 @@
-angular.module('GlobalFactory', ['myApp']);
+angular.module('directives', ['myApp']);
 
 (function ()
 {
@@ -21,16 +21,7 @@ angular.module('GlobalFactory', ['myApp']);
             printWelcomeMessage: function (lastName, firstName)
             {
                 var selector = document.getElementById('Greeting');
-
-                db.users.get(firstName, function (users) {
-                    selector.textContent = "Hello, " + users.lastName + " " + users.firstName + "!";
-                });
-            },
-            clearDB: function(firstName)
-            {
-                db.delete();
-                var selector = document.getElementById('Greeting');
-                selector.textContent = "";
+                selector.textContent = "Hello, " + lastName + " " + firstName + "!";
             }
         };
     }]);

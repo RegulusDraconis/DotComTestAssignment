@@ -83,6 +83,10 @@
                 }
             };
 
+            $scope.clearDBButton = function()
+            {
+                Factory.clearDB();
 
+            }
         }]);
 })();

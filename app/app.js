@@ -9,6 +9,13 @@ angular.module('myApp', [
 ]).config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider)
 {
     $locationProvider.hashPrefix('!');
+
+    $routeProvider
+    .when('/register', {
+        controller: 'registerController',
+        templateUrl: 'register/register.html'
+    })
+    .otherwise({redirectTo: '/register'});
 }]);
 
 
@@ -32,4 +39,3 @@ angular.module('myApp', [
         };
     });
 })();
-
