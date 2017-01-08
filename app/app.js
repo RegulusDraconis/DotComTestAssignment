@@ -31,7 +31,7 @@ angular.module('myApp', [
         };
     });
 
-    app.factory('FactoryHomepage', [function ($http)
+    app.factory('FactoryHomepage', [function ()
     {
         var db = new Dexie("user_database");
 
