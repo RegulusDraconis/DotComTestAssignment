@@ -18,12 +18,26 @@ angular.module('GlobalFactory', ['myApp']);
             {
                 return db;
             },
-            printWelcomeMessage: function (lastName, firstName)
+            printWelcomeMessage: function ()
             {
-                var selector = document.getElementById('Greeting');
+                var collection = db.users;
+                var firstName = "";
+                var lastName = "";
 
-                db.users.get(firstName, function (users) {
-                    selector.textContent = "Hello, " + users.lastName + " " + users.firstName + "!";
+
+                collection.count(function(users) {
+                    if (users <= 0)
+                    {
+                        document.getElementById('Greeting').innerHTML = "";
+                    } else
+                    {
+                        collection.each(function (users)
+                        {
+                            firstName = users.firstName;
+                            lastName = users.lastName;
+                            document.getElementById('Greeting').textContent = "Hello, " + lastName + " " + firstName + "!";
+                        });
+                    }
                 });
             },
             clearDB: function(firstName)
@@ -59,12 +73,12 @@ angular.module('GlobalFactory', ['myApp']);
                         collection.each(function (users)
                         {
                             document.getElementById('printAllEntries').innerHTML +=
-                                '<b>Lastname: </b>' + users.lastName + '<br />' +
                                 '<b>Firstname: </b>' + users.firstName + '<br />' +
+                                '<b>Lastname: </b>' + users.lastName + '<br />' +
                                 '<b>Address: </b>' + users.address + '<br />' +
                                 '<b>Birthday: </b>' + users.birthday + '<br />' +
                                 '<b>Register time: </b>' + users.registerTime + '<br />' +
-                                '------------------------------------------------------';
+                                '------------------------------------------------------' + '<br />';
                         });
                     }
                 });

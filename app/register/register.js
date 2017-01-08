@@ -20,6 +20,8 @@
 
             var db = Factory.indexedDB();
 
+            Factory.printWelcomeMessage();
+
             $scope.hideMessage = true;
 
             $scope.submit = function ()
@@ -67,7 +69,7 @@
                         console.log("Error occured: " + error);
                     });
 
-                    Factory.printWelcomeMessage(lastName, firstName);
+                    Factory.printWelcomeMessage();
 
                     $scope.firstName = '';
                     $scope.lastName = '';
