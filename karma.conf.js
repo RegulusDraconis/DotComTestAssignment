@@ -7,7 +7,9 @@ module.exports = function(config) {
     files: [
 
       'components/**/*.js',
-      'view*/**/*.js'
+      'register/register.js',
+        'factory/factory.js'
+
     ],
 
     autoWatch: true,

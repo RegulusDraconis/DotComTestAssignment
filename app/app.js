@@ -4,6 +4,7 @@
 angular.module('myApp', [
     'ngRoute',
     'myApp.register',
+    'GlobalFactory',
     'myApp.version'
 ]).config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider)
 {
@@ -30,27 +31,5 @@ angular.module('myApp', [
             }
         };
     });
-
-    app.factory('FactoryHomepage', [function ()
-    {
-        var db = new Dexie("user_database");
-
-        db.version(1).stores({
-            users: 'firstName,lastName, address, birthday, registerTime'
-        });
-
-        return {
-            indexedDB: function ()
-            {
-                return db;
-            },
-            printWelcomeMessage: function (lastName, firstName)
-            {
-                var selector = document.getElementById('Greeting');
-                selector.textContent = "Hello, " + lastName + " " + firstName + "!";
-            }
-        };
-    }]);
-
 })();
 

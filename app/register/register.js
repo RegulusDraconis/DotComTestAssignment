@@ -13,31 +13,13 @@
             });
         }])
 
-        .factory('FactoryRegister', function ($http, FactoryHomepage)
-        {
-            return {
-                getIndexedDb: function ()
-                {
-                    return FactoryHomepage.indexedDB();
-                },
-                getPrintWelcomeMessage: function (lastName, firstName)
-                {
-                    FactoryHomepage.printWelcomeMessage(lastName, firstName);
-                },
-                clearDB: function ()
-                {
-                    FactoryHomepage.clearDB();
-                }
-            };
-        })
-
-        .controller('registerController', ['$scope', '$rootScope', 'FactoryRegister', function ($scope, $rootScope, FactoryRegister)
+        .controller('registerController', ['$scope', '$rootScope', 'Factory', function ($scope, $rootScope, Factory)
         {
             $scope.list = [];
             var firstName, lastName, address, birthday, birthdayDate, registerTime = null;
             var ageDif, ageTime, ageYears = null;
 
-            var db = FactoryRegister.getIndexedDb();
+            var db = Factory.indexedDB();
 
             $scope.hideMessage = true;
 
@@ -86,7 +68,7 @@
                         console.log("Error occured: " + error);
                     });
 
-                    FactoryRegister.getPrintWelcomeMessage(lastName, firstName);
+                    Factory.printWelcomeMessage(lastName, firstName);
 
                     $scope.firstName = '';
                     $scope.lastName = '';
